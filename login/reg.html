@@ -17,7 +17,6 @@
         }
         .container {
             height: 100%;
-            background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
         }
         .login-wrapper {
             background-color: #fff;
@@ -67,13 +66,15 @@
         }
     </style>
 </head>
-<body>
+<body background="/img/bg-login.jpg"
+style="background-size:100%;
+background-attachment: fixed;">
     <div class="container">
         <div class="login-wrapper">
             <div class="header">注册</div>
             <div class="form-wrapper">
-                <input type="text" name="username" placeholder="username" class="input-item">
-                <input type="password" name="password" placeholder="password" class="input-item">
+                <input type="text" name="username" placeholder="用户名" class="input-item">
+                <input type="password" name="password" placeholder="密码" class="input-item">
                 <div class="btn">注册</div>
             </div>
         </div>
