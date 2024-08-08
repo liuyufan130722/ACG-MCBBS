@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slide Captcha Example</title>
+</head>
+<body>
+    <img src="" alt="Captcha Pic" id="captcha" onclick="getCaptchaPic()">
+    <input type="text" id="captcha_input" placeholder="输入验证码">
+    <button onclick="submitCaptcha()">验证</button>
+
+    <script>
+        function submitCaptcha() {
+            var code = document.getElementById('captcha_input').value;
+            fetch('/verify_graphic_captcha', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ code: code }),
+            })
+            .then(response => response.json())
+            .then(data => alert(data.success ? 'Success' : data.content))
+            .catch(error => console.error('Error:', error));
+        }
+        function getCaptchaPic() {
+            fetch('/generate_graphic_captcha')
+               .then(response => response.json())
+               .then(data => {
+                    if (data.code == 200) {
+                        document.getElementById('captcha').src = data.content;
+                    } else {
+                        alert('Failed to get captcha');
+                    }
+                })
+               .catch(error => console.error('Error:', error));
+        }
+        getCaptchaPic();
+    </script>
+</body>
+</html>
