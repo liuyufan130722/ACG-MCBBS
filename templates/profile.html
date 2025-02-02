@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>个人资料</h2>
+    <div class="profile">
+        <img src="{{ url_for('uploaded_file', filename=user.avatar) }}" alt="用户头像">
+        <h3>{{ user.username }}</h3>
+        <p>邮箱：{{ user.email }}</p>
+    </div>
+    <h3>我的帖子</h3>
+    {% if user.posts %}
+        {% for post in user.posts %}
+            <div class="post">
+                <h4>{{ post.title }}</h4>
+                <p>{{ post.content }}</p>
+                <small>发布时间：{{ post.date_posted.strftime('%Y-%m-%d %H:%M') }}</small>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>你还没有发布过帖子。</p>
+    {% endif %}
+{% endblock %}

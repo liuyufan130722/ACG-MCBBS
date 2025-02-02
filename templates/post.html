@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>发布新帖子</h2>
+    <form method="POST" action="{{ url_for('new_post') }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.title.label }}<br>
+            {{ form.title(size=32, class="form-control") }}<br>
+            {% for error in form.title.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.content.label }}<br>
+            <!-- wangEditor 编辑器容器 -->
+            <div id="editor"></div>
+            <textarea name="content" style="display:none;">{{ form.content.data or '' }}</textarea><br>
+            {% for error in form.content.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+
+    <!-- 引入 wangEditor -->
+    <script src="https://cdn.jsdelivr.net/npm/wangeditor@latest/dist/wangEditor.min.js"></script>
+    <style>
+        /* 自定义 wangEditor 样式 */
+        .w-e-text-container {
+            color: black !important; /* 正文文字颜色 */
+        }
+        .w-e-text p,
+        .w-e-text h1,
+        .w-e-text h2,
+        .w-e-text h3,
+        .w-e-text h4,
+        .w-e-text h5,
+        .w-e-text h6 {
+            color: black !important; /* 标题文字颜色 */
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const E = window.wangEditor;
+            const editor = new E('#editor');
+
+            // 配置编辑器
+            editor.config.placeholder = '请输入内容...';
+            editor.config.height = 300;
+
+            // 自定义菜单配置（可选）
+            editor.config.menus = [
+                'head', // 标题
+                'bold', // 粗体
+                'fontSize', // 字号
+                'fontName', // 字体
+                'italic', // 斜体
+                'underline', // 下划线
+                'strikeThrough', // 删除线
+                'indent', // 缩进
+                'lineHeight', // 行高
+                'foreColor', // 文字颜色
+                'backColor', // 背景颜色
+                'link', // 插入链接
+                'list', // 列表
+                'justify', // 对齐方式
+                'quote', // 引用
+                'emoticon', // 表情
+                'image', // 插入图片
+                'video', // 插入视频
+                'table', // 表格
+                'code', // 插入代码
+                'splitLine', // 分隔线
+                'undo', // 撤销
+                'redo' // 重做
+            ];
+
+            // 将编辑器内容同步到隐藏的 textarea
+            editor.config.onchange = function (newHtml) {
+                document.querySelector('textarea[name="content"]').value = newHtml;
+            };
+
+            // 创建编辑器
+            editor.create();
+        });
+    </script>
+{% endblock %}
+
+
+

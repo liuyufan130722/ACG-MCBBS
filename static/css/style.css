@@ -1,0 +1,116 @@
+/* 全局样式 */
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: url('../images/backgrounds/minecraft_bg.jpg') fixed;
+    color: #fff;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 3px solid #00ff00;
+}
+
+h1 {
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #00ff00; }
+    to { text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00; }
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav a:hover {
+    color: #00ff00 !important;
+    transform: scale(1.1);
+}
+
+main {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.alert-success {
+    background: rgba(0, 255, 0, 0.2);
+    color: #00ff00;
+}
+
+.alert-danger {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff0000;
+}
+
+.post {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid #444;
+    transition: transform 0.3s;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+    border-color: #00ff00;
+}
+
+.post h3 {
+    margin-top: 0;
+    color: #00ff00;
+}
+
+.post small {
+    color: #ccc;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 5px solid #00ff00;
+    transition: transform 0.8s;
+}
+
+.profile img:hover {
+    transform: rotate(360deg);
+}
+
+.profile h2 {
+    color: #00ff00;
+}
+
+.profile p {
+    color: #ccc;
+}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>最新帖子</h2>
+    {% if posts %}
+        {% for post in posts %}
+            <div class="post mb-4 p-4 border rounded">
+                <h3>{{ post.title }}</h3>
+                <div>{{ post.content|safe }}</div>
+                <small>
+                    作者：<a href="{{ url_for('profile', user_id=post.author.id) }}">{{ post.author.username }}</a> |
+                    发布时间：{{ post.date_posted.strftime('%Y-%m-%d %H:%M') }}
+                </small>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>还没有帖子，快来发布第一个吧！</p>
+    {% endif %}
+{% endblock %}

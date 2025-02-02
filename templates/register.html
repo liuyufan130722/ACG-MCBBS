@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>用户注册</h2>
+    <form method="POST" action="{{ url_for('register') }}" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}<br>
+            {% for error in form.email.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.confirm_password.label }}<br>
+            {{ form.confirm_password(size=32) }}<br>
+            {% for error in form.confirm_password.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.avatar.label }}<br>
+            {{ form.avatar }}<br>
+            <small>支持格式：PNG, JPG, GIF（最大200x200像素）</small>
+            {% for error in form.avatar.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        {{ form.submit(class="btn btn-success") }}
+    </form>
+    <p>已有验证码？<a href="{{ url_for('verify_email') }}">点击验证</a></p>
+{% endblock %}

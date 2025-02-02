@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>用户登录</h2>
+    <form method="POST" action="{{ url_for('login') }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.username.label }}<br>
+            {{ form.username(size=32, class="form-control") }}<br>
+            {% for error in form.username.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.password.label }}<br>
+            {{ form.password(size=32, class="form-control") }}<br>
+            {% for error in form.password.errors %}
+                <span class="text-danger">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+    <p>还没有账号？<a href="{{ url_for('register') }}">立即注册</a></p>
+{% endblock %}

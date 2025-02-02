@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>实时聊天室</h2>
+    <div id="chat-box">
+        <div id="messages"></div>
+        <form id="chat-form">
+            <input type="text" id="message-input" placeholder="输入消息..." required>
+            <button type="submit">发送</button>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        // 接收消息
+        socket.on('receive_message', function(data) {
+            const messageElement = document.createElement('div');
+            messageElement.innerHTML = `<strong>${data.username}:</strong> ${data.message}`;
+            document.getElementById('messages').appendChild(messageElement);
+        });
+
+        // 发送消息
+        document.getElementById('chat-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = document.getElementById('message-input').value;
+            socket.emit('send_message', { message: message });
+            document.getElementById('message-input').value = '';
+        });
+    </script>
+{% endblock %}
