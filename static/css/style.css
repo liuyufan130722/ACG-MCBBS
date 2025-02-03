@@ -114,3 +114,36 @@ main {
 .profile p {
     color: #ccc;
 }
+.reply {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #444;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.reply:hover {
+    transform: translateY(-3px);
+    border-color: #00ff00;
+}
+
+.btn-outline-primary {
+    color: #00ff00;
+    border-color: #00ff00;
+}
+
+.btn-outline-primary:hover {
+    background-color: #00ff00;
+    color: #000;
+}
+
+.table {
+    color: #fff;
+}
+
+.table th, .table td {
+    border-color: #444;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

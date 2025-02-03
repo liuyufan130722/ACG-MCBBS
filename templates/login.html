@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>用户登录</h2>
+    <h2>用户登录呢~</h2>
     <form method="POST" action="{{ url_for('login') }}">
         {{ form.hidden_tag() }}
         <div class="form-group">
@@ -19,5 +19,5 @@
         </div>
         {{ form.submit(class="btn btn-primary") }}
     </form>
-    <p>还没有账号？<a href="{{ url_for('register') }}">立即注册</a></p>
+    <p>还没有账号吗？<a href="{{ url_for('register') }}">立即注册一个叭~</a></p>
 {% endblock %}
