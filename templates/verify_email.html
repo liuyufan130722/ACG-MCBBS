@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>邮箱验证</h2>
-    <p>我们已向您的邮箱发送了6位验证码，请查收后填写：</p>
+    <h2>邮箱验证哦~</h2>
+    <p>我们已向您的邮箱发送了6位验证码，请查收后谨慎填写！！！：</p>
     <form method="POST">
         <div class="form-group">
-            <label for="verification_code">验证码</label>
+            <label for="verification_code">验证码是什么呐~</label>
             <input type="text" id="verification_code" name="verification_code" required class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">验证</button>
+        <button type="submit" class="btn btn-primary">验证一下叭~</button>
     </form>
-    <p>未收到验证码？<a href="{{ url_for('resend_code') }}">重新发送</a></p>
+    <p>未收到验证码吗？我不知道咋办啊？<a href="{{ url_for('resend_code') }}">重新发送一下叭~</a></p>
 {% endblock %}

@@ -6,19 +6,21 @@
     <title>ACG-MCBBS</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto&display=swap" rel="stylesheet">
+    <!-- 引入 cropper.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>ACG-MCBBS</h1>
         <nav>
-            <a href="{{ url_for('index') }}">首页</a>
+            <a href="{{ url_for('index') }}">是首页哦~</a>
             {% if 'user_id' in session %}
-                <a href="{{ url_for('profile') }}">个人中心</a>
-                <a href="{{ url_for('new_post') }}">发帖</a>
-                <a href="{{ url_for('logout') }}">退出</a>
+                <a href="{{ url_for('profile') }}">我的~</a>
+                <a href="{{ url_for('new_post') }}">发个帖叭~</a>
+                <a href="{{ url_for('logout') }}">一定要退出吗？</a>
             {% else %}
-                <a href="{{ url_for('login') }}">登录</a>
-                <a href="{{ url_for('register') }}">注册</a>
+                <a href="{{ url_for('login') }}">登录叭~</a>
+                <a href="{{ url_for('register') }}">注册叭~</a>
             {% endif %}
         </nav>
     </header>
@@ -33,5 +35,7 @@
         {% block content %}{% endblock %}
     </main>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <!-- 引入 cropper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
 </body>
 </html>

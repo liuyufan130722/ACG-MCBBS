@@ -2,9 +2,20 @@
 {% block content %}
     <h2>你的资料呢~</h2>
     <div class="profile">
-        <img src="{{ url_for('uploaded_file', filename=user.avatar) }}" alt="你的头像~">
+        <img id="avatar-preview" src="{{ url_for('uploaded_file', filename=user.avatar) }}" alt="你的头像~">
         <h3>{{ user.username }}</h3>
         <p>邮箱：{{ user.email }}</p>
+        <!-- 添加头像修改按钮 -->
+        <button id="change-avatar-btn" class="btn btn-outline-primary">修改头像</button>
+        <!-- 添加裁剪弹窗 -->
+        <div id="avatar-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img id="avatar-cropper" src="" alt="裁剪头像">
+                <button id="crop-avatar-btn" class="btn btn-outline-primary">确定</button>
+                <button id="cancel-avatar-btn" class="btn btn-outline-primary">取消</button>
+            </div>
+        </div>
     </div>
     <h3>我的发布的帖子哦~</h3>
     {% if user.posts %}
