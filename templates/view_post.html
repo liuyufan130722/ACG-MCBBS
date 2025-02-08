@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <div class="post mb-4 p-4 border rounded">
+        <div>{{ post.content|safe }}</div>
+        <small>
+            本贴作者~：<a href="{{ url_for('profile', user_id=post.author.id) }}">{{ post.author.username }}</a> |
+            发布时间~：{{ post.date_posted.strftime('%Y-%m-%d %H:%M') }}
+        </small>
+        <div class="mt-3">
+            <form method="POST" action="{{ url_for('like_post', post_id=post.id) }}" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-outline-primary">
+                    👍 {{ post.likes | length }} 点个赞叭~
+                </button>
+            </form>
+            <form method="POST" action="{{ url_for('reply_post', post_id=post.id) }}" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-outline-primary">
+                    💬 {{ post.replies | length }} 回复叭~
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <h3>回复一下叭~</h3>
+    {% if replies %}
+        {% for reply in replies %}
+            <div class="reply mb-3 p-3 border rounded">
+                <p>{{ reply.content }}</p>
+                <small>
+                    回复者是谁呢？：<a href="{{ url_for('profile', user_id=reply.user_id) }}">{{ reply.author.username }}</a> |
+                    时间~：{{ reply.date_posted.strftime('%Y-%m-%d %H:%M') }}
+                </small>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>还没有回复，快来发表你的看法吧！</p>
+    {% endif %}
+
+    <h3>发表回复一下叭~</h3>
+    <form method="POST" action="{{ url_for('reply_post', post_id=post.id) }}">
+        <div class="form-group">
+            <textarea name="content" class="form-control" rows="3" placeholder="输入你的回复呢..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">提交回复哦~</button>
+    </form>
+{% endblock %}

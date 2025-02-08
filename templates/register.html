@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>用户注册</h2>
+    <h2>用户注册哦~</h2>
     <form method="POST" action="{{ url_for('register') }}" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <div class="form-group">
@@ -34,12 +34,12 @@
         <div class="form-group">
             {{ form.avatar.label }}<br>
             {{ form.avatar }}<br>
-            <small>支持格式：PNG, JPG, GIF（最大200x200像素）</small>
+            <small>支持の格式有：PNG, JPG, GIF（最大200x200像素）请看仔细哈~</small>
             {% for error in form.avatar.errors %}
                 <span class="text-danger">[{{ error }}]</span>
             {% endfor %}
         </div>
         {{ form.submit(class="btn btn-success") }}
     </form>
-    <p>已有验证码？<a href="{{ url_for('verify_email') }}">点击验证</a></p>
+    <p>已有验证码的话<a href="{{ url_for('verify_email') }}">点击就可以验证了呢~</a></p>
 {% endblock %}
